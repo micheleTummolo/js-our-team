@@ -42,14 +42,23 @@ for (let i = 0; i < team.length; i++) {
     }
 }
 
-/* MILESTONE 2: Stampare le stesse informazioni su DOM sottoforma di stringhe */
+/* MILESTONE 2: Stampare le stesse informazioni su DOM sottoforma di stringhe. */
+
+/* BONUS 1: Trasformare la stringa foto in una immagine effettiva. */
 
 let content = document.getElementById('container')
 
 for (let i = 0; i < team.length; i++) {
     let componente_team = team[i]
     for (let key in team[i]) {
-        content.innerHTML += `<h1>${(key + " = " + componente_team[key])}</h1>`
+        if (key == "foto"){
+            content.innerHTML += `<img src="img/${componente_team[key]}"></img>`
+        }
+        else {
+            content.innerHTML += `<h1>${(key + " = " + componente_team[key])}</h1>`
+        }
     }
     content.innerHTML += `<hr>`
 }
+
+{/* <img src="" alt=""></img> */}
