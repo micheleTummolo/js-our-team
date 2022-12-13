@@ -46,19 +46,37 @@ for (let i = 0; i < team.length; i++) {
 
 /* BONUS 1: Trasformare la stringa foto in una immagine effettiva. */
 
-let content = document.getElementById('container')
+/* BONUS 2: Organizzare i singoli membri in card/schede. */
+
+let content = document.getElementById('card_container')
+
+cardGenerator(team.length)
 
 for (let i = 0; i < team.length; i++) {
     let componente_team = team[i]
-    for (let key in team[i]) {
-        if (key == "foto"){
-            content.innerHTML += `<img src="img/${componente_team[key]}"></img>`
+
+    for (let key in componente_team) {
+        
+        if (key == "nome") {
+            document.getElementById('card-body' + i).innerHTML = `<h4 class="card-title">${componente_team[key]}</h4>`
         }
-        else {
-            content.innerHTML += `<h1>${(key + " = " + componente_team[key])}</h1>`
+        else if (key == "ruolo") {
+            document.getElementById('card-body' + i).innerHTML += `<h5>${componente_team[key]}</h5>`
+        }
+        else if (key == "foto"){
+            document.getElementById('card' + i).innerHTML +=`<img src="./img/${componente_team[key]}" class="card-img-top">`
         }
     }
-    content.innerHTML += `<hr>`
 }
 
-{/* <img src="" alt=""></img> */}
+function cardGenerator(card_number) {
+    for (let i = 0; i < card_number; i++) {
+        content.innerHTML += `
+        <div class="col mb-4">
+            <div id="card${i}" class="card">
+                <div id="card-body${i}" class="card-body text-center">
+                </div>
+            </div>
+        </div>`
+    }
+}
