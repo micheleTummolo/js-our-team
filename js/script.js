@@ -41,3 +41,15 @@ for (let i = 0; i < team.length; i++) {
         console.log(key + " = " + componente_team[key])
     }
 }
+
+/* MILESTONE 2: Stampare le stesse informazioni su DOM sottoforma di stringhe */
+
+let content = document.getElementById('container')
+
+for (let i = 0; i < team.length; i++) {
+    let componente_team = team[i]
+    for (let key in team[i]) {
+        content.innerHTML += `<h1>${(key + " = " + componente_team[key])}</h1>`
+    }
+    content.innerHTML += `<hr>`
+}
